@@ -6,7 +6,7 @@ db:
     - POSTGRES_PASSWORD=test
 
 web:
-  image: dius/pact_broker
+  image: dius/pact-broker
   ports: ["8080:80"]
   links: ["db"]
   environment:

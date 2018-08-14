@@ -11,9 +11,9 @@ describe('Pact', () => {
   const provider = pact({
     consumer: 'TodoApp',
     provider: 'TodoService',
-    port: 8002,
+    port: 8080,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-    dir: path.resolve(process.cwd(), 'pacts'),
+    dir: path.resolve(process.cwd(), 'pacts'),// json文件生成位置
     logLevel: 'INFO',
     spec: 2
   });
@@ -29,11 +29,11 @@ describe('Pact', () => {
             uponReceiving: 'a request for get user',
             withRequest: {
               method: 'GET',
-              path: '/user/1'
+              path: '/1'
             },
             willRespondWith: {
               status: 200,
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 'Content-Type': 'application/json; charset=utf-8' },
               body: {
                 id: 1,
                 name: 'God'
@@ -46,7 +46,7 @@ describe('Pact', () => {
 
       // 4. 测试代码中需要有逻辑请求mock的生产者服务
       it('should response with user with id and name', (done) => {
-        request.get('http://localhost:8002/user/1')
+        request.get('http://localhost:8080/1')
           .then((response) => {
             const user = response.body;
             expect(user.name).to.equal('God');

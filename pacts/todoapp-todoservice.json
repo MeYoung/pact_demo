@@ -8,15 +8,15 @@
   "interactions": [
     {
       "description": "a request for get user",
-      "provider_state": "have a matched user",
+      "providerState": "have a matched user",
       "request": {
         "method": "GET",
-        "path": "/user/1"
+        "path": "/1"
       },
       "response": {
         "status": 200,
         "headers": {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json; charset=utf-8"
         },
         "body": {
           "id": 1,
@@ -26,6 +26,8 @@
     }
   ],
   "metadata": {
-    "pactSpecificationVersion": "2.0.0"
+    "pactSpecification": {
+      "version": "0.0.0"
+    }
   }
 }
